@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сырые мысли</title>
+    <title>Сырые мысли - архив</title>
     <style>
         * {
             margin: 0;
@@ -12,89 +12,146 @@
         }
         
         body {
-            font-family: 'Courier New', monospace;
-            background: #0a0a0a;
-            color: #00ff00;
-            line-height: 1.6;
-            padding: 20px;
-            max-width: 1000px;
+            font-family: 'Times New Roman', serif;
+            background: #f5e8c8 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.1"><rect fill="%23a52a2a" width="100" height="100"/><path fill="%23800000" d="M0 0h100v100H0zM10 10h80v80H10z"/></svg>');
+            color: #3c2f1e;
+            line-height: 1.5;
+            padding: 15px;
+            max-width: 900px;
             margin: 0 auto;
+            border: 12px double #8B4513;
+            box-shadow: inset 0 0 25px rgba(0,0,0,0.3);
         }
         
         /* Главное меню */
         .main-menu {
-            border: 1px solid #00ff00;
-            padding: 10px;
-            margin-bottom: 30px;
-            background: #001100;
+            border: 3px ridge #8B4513;
+            padding: 15px;
+            margin-bottom: 25px;
+            background: #d2b48c;
+            position: relative;
+        }
+        
+        .main-menu::before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border: 1px solid #8B4513;
+            pointer-events: none;
         }
         
         .menu-title {
-            font-size: 24px;
+            font-size: 28px;
             text-align: center;
             margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
+            color: #5d2906;
+            text-shadow: 1px 1px 0px #a0522d;
+            font-weight: bold;
         }
         
         .nav-links {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 20px;
             flex-wrap: wrap;
         }
         
         .nav-links a {
-            color: #00ff00;
+            color: #5d2906;
             text-decoration: none;
-            border: 1px solid #00ff00;
-            padding: 5px 15px;
-            transition: all 0.3s;
+            border: 2px outset #8B4513;
+            padding: 6px 18px;
+            background: #cd853f;
+            font-weight: bold;
+            font-size: 16px;
         }
         
         .nav-links a:hover {
-            background: #00ff00;
-            color: #0a0a0a;
+            background: #a0522d;
+            color: #fff;
+            border: 2px inset #8B4513;
+        }
+        
+        .nav-links a:active {
+            border: 2px inset #8B4513;
         }
         
         /* Контейнер мыслей */
         .thoughts-container {
-            border: 1px solid #00ff00;
+            border: 3px ridge #8B4513;
             padding: 20px;
-            background: #001100;
+            background: #f5e8c8;
+            position: relative;
+        }
+        
+        .thoughts-container::before {
+            content: "";
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 1px dashed #8B4513;
+            pointer-events: none;
         }
         
         .page-title {
             text-align: center;
-            font-size: 28px;
-            margin-bottom: 30px;
+            font-size: 26px;
+            margin-bottom: 25px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            color: #5d2906;
+            text-decoration: underline;
+            font-weight: bold;
         }
         
         /* Отдельная мысль */
         .thought {
-            margin-bottom: 40px;
-            padding: 15px;
-            border-left: 3px solid #00ff00;
-            background: #002200;
+            margin-bottom: 35px;
+            padding: 18px;
+            border: 2px groove #8B4513;
+            background: #f0e0c0;
+            position: relative;
+        }
+        
+        .thought::after {
+            content: "";
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 30px;
+            height: 30px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="%238B4513" d="M9 22l-3-3 3-3 1.5 1.5L9 19l4.5-4.5L15 16l-3 3 3 3-1.5 1.5L9 22zm6-20l3 3-3 3-1.5-1.5L15 5l-4.5 4.5L9 8l3-3-3-3 1.5-1.5L15 2z"/></svg>') no-repeat center;
+            opacity: 0.3;
         }
         
         .thought-date {
-            color: #008800;
-            font-size: 14px;
-            margin-bottom: 10px;
+            color: #8B4513;
+            font-size: 15px;
+            margin-bottom: 12px;
+            font-style: italic;
+            border-bottom: 1px dotted #8B4513;
+            padding-bottom: 5px;
         }
         
         .thought-content {
-            font-size: 16px;
+            font-size: 17px;
             white-space: pre-line;
+            text-align: justify;
+            font-family: 'Georgia', serif;
         }
         
         .thought-tags {
-            margin-top: 10px;
+            margin-top: 12px;
             font-size: 14px;
-            color: #008800;
+            color: #8B4513;
+            font-style: italic;
         }
         
         /* Адаптивность */
@@ -102,29 +159,80 @@
             .nav-links {
                 flex-direction: column;
                 align-items: center;
-                gap: 10px;
+                gap: 12px;
             }
             
             body {
                 padding: 10px;
             }
+            
+            .menu-title {
+                font-size: 22px;
+            }
         }
         
-        /* Эффекты терминала */
+        /* Эффекты */
         .blink {
-            animation: blink 1s infinite;
+            animation: blink 1.2s infinite;
+            color: #8B0000;
         }
         
         @keyframes blink {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+            50% { opacity: 0.3; }
+        }
+        
+        /* Дополнительные винтажные элементы */
+        .corner-decoration {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="%238B4513" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>') no-repeat center;
+            opacity: 0.5;
+        }
+        
+        .top-left { top: 10px; left: 10px; }
+        .top-right { top: 10px; right: 10px; }
+        .bottom-left { bottom: 10px; left: 10px; }
+        .bottom-right { bottom: 10px; right: 10px; }
+        
+        /* Винтажный скроллбар */
+        ::-webkit-scrollbar {
+            width: 14px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #d2b48c;
+            border: 1px solid #8B4513;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #8B4513;
+            border: 1px solid #5d2906;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #A0522D;
+        }
+        
+        hr {
+            border: 0;
+            height: 1px;
+            background: #8B4513;
+            margin: 20px 0;
+            background-image: linear-gradient(to right, #f5e8c8, #8B4513, #f5e8c8);
         }
     </style>
 </head>
 <body>
+    <div class="corner-decoration top-left"></div>
+    <div class="corner-decoration top-right"></div>
+    <div class="corner-decoration bottom-left"></div>
+    <div class="corner-decoration bottom-right"></div>
+    
     <!-- Главное меню -->
     <nav class="main-menu">
-        <div class="menu-title">СЫРЫЕ МЫСЛИ <span class="blink">_</span></div>
+        <div class="menu-title">Архив сырых мыслей <span class="blink">✎</span></div>
         <div class="nav-links">
             <a href="#thoughts">Все мысли</a>
             <a href="#latest">Последние</a>
@@ -135,11 +243,13 @@
 
     <!-- Контейнер со всеми мыслями -->
     <div class="thoughts-container">
-        <div class="page-title">АРХИВ МЫСЛЕЙ</div>
+        <div class="page-title">Хроники разума</div>
+        
+        <hr>
         
         <!-- Мысль 1 -->
         <div class="thought">
-            <div class="thought-date">[2025-10-20 12:08]</div>
+            <div class="thought-date">[10/20/2025 12:08]</div>
             <div class="thought-content">
 Первопричины дают вектор, вектор дает направление а направление дает не сбиться с пути, направляя твои электроны в правильное направления, так скажем gates не дающие выйти за пределы.
 
@@ -150,8 +260,8 @@
             <div class="thought-tags">#творчество #физика_сознания #константа</div>
         </div>
         
+        <hr>
 
-        
     </div>
 
     <script>
@@ -170,6 +280,12 @@
                     
                     randomThought.scrollIntoView({ behavior: 'smooth' });
                     
+                    // Добавляем визуальный эффект выбора
+                    randomThought.style.animation = 'pulse 1s';
+                    setTimeout(() => {
+                        randomThought.style.animation = '';
+                    }, 1000);
+                    
                 } else if (target === '#latest') {
                     document.querySelectorAll('.thought').forEach((t, i) => {
                         t.style.display = i === 0 ? 'block' : 'none';
@@ -181,10 +297,21 @@
                     });
                     
                 } else if (target === '#about') {
-                    alert('Сайт сырых мыслей.\nМысли приходят — мысли записываются.\nБез фильтров, без редактирования.\nЧистый поток сознания.');
+                    alert('Архив сырых мыслей.\nСобрание необработанных размышлений, идей и озарений.\nЗаписывается без цензуры и редактирования.\nКак старинный манускрипт, хранящий мысли минувших дней.');
                 }
             });
         });
+        
+        // Добавляем стиль для анимации пульсации
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { box-shadow: 0 0 0 0 rgba(139, 69, 19, 0.7); }
+                70% { box-shadow: 0 0 0 10px rgba(139, 69, 19, 0); }
+                100% { box-shadow: 0 0 0 0 rgba(139, 69, 19, 0); }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
-  </html>
+</html>
